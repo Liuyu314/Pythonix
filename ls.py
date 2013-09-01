@@ -1,3 +1,10 @@
+# Author: Liuyu
+# Email: yuliu314@gmail.com
+# Description: 'ls' unix command
+# Version: 1.0
+# Time: 2013,9,1 23:36
+# Option: Unfinished function: Output format, ls -a, ls -l 
+
 import os
 import sys
 
