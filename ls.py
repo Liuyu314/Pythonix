@@ -20,6 +20,9 @@ elif sys.argv[1].startswith('-'):
 	option = sys.argv[1][1:]
 	if option == 'a':
 		showHide = 1
+	if option == 'help':
+		print "usage: ls [-a] [file ...]"
+		sys.exit()
 else:
 	curPath = sys.argv[1]
 	showList(curPath)

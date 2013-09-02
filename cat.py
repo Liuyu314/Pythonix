@@ -30,6 +30,9 @@ else:
 	for i in sys.argv[1:]:
 		if i.startswith('-'):
 			option = i[1:]
+			if option == 'help':
+				print "Usage: cat [-n] [file ...]"
+				sys.exit()
 		else:
 			if not os.path.exists(i):
 				print "cat: %s: No such file or directory" %i
