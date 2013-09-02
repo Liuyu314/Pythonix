@@ -2,7 +2,7 @@
 # Email: yuliu314@gmail.com
 # Description: 'more' unix command
 # Version: 1.0
-# Time: 2013,9,1 23:36
+# Time: 2013,9,2 20:30
 # Option: The reason I add "<&2" after "stty ..." is to redirect stdin 
 #	   	  to stdout, it can solve the problem "stty: stdin isn't a terminal"
 
