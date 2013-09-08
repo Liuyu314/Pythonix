@@ -1,16 +1,22 @@
 # Author:  UesrName
 # Email:  UesrEmail
 # Time: 2013,09,08 13:31:22
-# Description:
-# Version:
-# Option:
+# Description: count the lines, types and words of files
+# Version: 2.0
+# Option: wc -l file
+#         wc -l -w -c file
+#         wc -lwc file
+#         wc file1 file2
+#         wc --help file
+#         wc file --help
 
 import os
 import sys
 
 def do_wc(filename, opt_lines, opt_words, opt_types):
 	if not os.path.exists(filename):
-		print "wc: %s: open: No such file or directroy"
+		print "wc: %s: open: No such file or directroy" %filename
+		return 0, 0, 0
 	else:
 		lines = 0
 		words = 0
@@ -25,8 +31,11 @@ def do_wc(filename, opt_lines, opt_words, opt_types):
 			if opt_types == 1:
 				types += len(cnt)
 			if opt_words == 1:
-				tmp = cnt.split(' ')
-				words += len(tmp)
+				tmp = cnt.split()
+				if len(tmp) == 1 and tmp[0] == '\n':
+					pass
+				else:
+					words += len(tmp)
 
 		if opt_lines == 1:
 			print "%8d" %lines,
@@ -54,7 +63,13 @@ else:
 				print "wc: illegal option -- -"
 				sys.exit()
 		elif i.startswith('-'):
-			location = location + 1
+			if len(i) == 1:
+				lines_total = 0
+				types_total = 0
+				words_total = 0
+				file_num = 0
+				break
+			location += 1
 			for opt in i[1:]:
 				if opt == 'w':
 					opt_words = 1
@@ -80,7 +95,6 @@ else:
 	for i in sys.argv[location + 1:]:
 		file_num += 1
 		re_wc = do_wc(i, opt_lines, opt_words, opt_types)
-		print re_wc[0], re_wc[1], re_wc[2]
 		lines_total += re_wc[0]
 		words_total += re_wc[1]
 		types_total += re_wc[2]
@@ -90,7 +104,7 @@ else:
 		if opt_lines == 1:
 			print "%8d" %lines_total,
 		if opt_words == 1:
-			print "%8d" %words_total,
+			print "%7d" %words_total,
 		if opt_types == 1:
-			print "%8d" %types_total,
-		print "      total" 
+			print "%7d" %types_total,
+		print "total" 
