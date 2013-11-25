@@ -11,7 +11,7 @@ import sys
 
 def see_more(f):
 	while True:
-		os.system("stty -icanon <&2") # input a character without enter 
+		os.system("stty -icanon <&2") # input a character without enter
 		c = f.read(1)
 		os.system("stty icanon <&2")
 		if c == 'q':

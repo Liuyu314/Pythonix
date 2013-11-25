@@ -3,7 +3,7 @@
 # Description: 'ls' unix command
 # Version: 1.0
 # Time: 2013,9,1 23:36
-# Option: Unfinished function: Output format, ls -a, ls -l 
+# Option: Unfinished function: Output format, ls -a, ls -l
 
 import os
 import sys
@@ -21,7 +21,7 @@ elif sys.argv[1].startswith('-'):
 	if option == 'a':
 		showHide = 1
 	if option == 'help':
-		print "usage: ls [-a] [file ...]"
+		print "usage: ls [-a] [file...]"
 		sys.exit()
 else:
 	curPath = sys.argv[1]
